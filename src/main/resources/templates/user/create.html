@@ -99,8 +99,8 @@
                                                 <div class="form-group">
                                                     <label>Choose a Role</label>
                                                     <select name="role" th:field="*{role}" class="custom-select">
-                                                        <option th:value="''" th:text="Select" disabled></option>
-                                                        <option th:each="role : ${roles}" th:text="${role}"></option>
+                                                        <option th:value="''" th:text="Select"></option>
+                                                        <option th:each="role : ${roles}" th:text="${role.description}" th:value="${role.id}"></option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -154,12 +154,12 @@
 
                                             <tbody>
 
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                            <tr th:each="u: ${users}">
+                                                <td th:text="${u.firstName + ' ' + u.lastName}"></td>
+                                                <td th:text="${u.userName}"></td>
+                                                <td th:text="${u.gender.value}"></td>
+                                                <td th:text="${u.phone}"></td>
+                                                <td th:text="${u.role.description}"></td>
                                                 <td class="actions">
                                                     <a href="#"><button type="button" class="btn btn-warning btn-sm">Update</button></a>
                                                     <a href="#" class="delete-row"><button type="button" class="btn btn-secondary btn-sm">Delete</button></a>
