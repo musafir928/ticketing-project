@@ -38,7 +38,9 @@ public class UserController {
 
         userService.save(user);
 
-        return "redirect:create";
+        return "redirect:/user/create";
+
+        // important note: / will omit all url part after domain, without / we will end up with some duplication in the url
     }
 
 }
