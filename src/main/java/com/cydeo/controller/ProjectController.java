@@ -5,8 +5,7 @@ import com.cydeo.service.ProjectService;
 import com.cydeo.service.UserService;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Component
 @RequestMapping("/project")
@@ -20,10 +19,18 @@ public class ProjectController {
     }
 
     @GetMapping("/create")
-    public String createProject(Model model) {
+    public String getCreateProjectForm(Model model) {
         model.addAttribute("project", new ProjectDTO());
         model.addAttribute("projects", projectService.findAll());
         model.addAttribute("managers", userService.findAll());
         return "/project/create";
+    }
+
+    @PostMapping("/create")
+    public String createProject(ProjectDTO project) {
+
+        projectService.save(project);
+
+        return "redirect:/project/create";
     }
 }
