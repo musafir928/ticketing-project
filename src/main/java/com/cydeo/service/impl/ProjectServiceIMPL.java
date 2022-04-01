@@ -37,4 +37,10 @@ public class ProjectServiceIMPL extends AbstractMapServices<String, ProjectDTO> 
     public void deleteById(String id) {
         super.deleteById(id);
     }
+
+    @Override
+    public void complete(ProjectDTO projectDTO) {
+        projectDTO.setStatus(Status.COMPLETE);
+        super.save(projectDTO.getProjectCode(), projectDTO);
+    }
 }
