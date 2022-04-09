@@ -1,4 +1,5 @@
-<h1 align="center">ticketing-project</h1>
+<h1 align="center">Ticketing Project</h1>
+
 # A Spring MVC project
 
 front-end and data generator class for backend
