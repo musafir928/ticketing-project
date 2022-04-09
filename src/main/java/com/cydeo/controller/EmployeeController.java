@@ -30,4 +30,11 @@ public class EmployeeController {
         model.addAttribute("tasks", taskService.findTasksByManager(manager));
         return "task/pending-tasks";
     }
+
+    @GetMapping("/archive-tasks")
+    public String getArchiveTasks(Model model) {
+        UserDTO manager = userService.findById("john@cydeo.com");
+        model.addAttribute("tasks", taskService.findTasksByManager(manager));
+        return "task/archive";
+    }
 }
